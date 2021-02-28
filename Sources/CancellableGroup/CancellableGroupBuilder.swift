@@ -28,3 +28,10 @@ public struct CancellableGroupBuilder {
     }
     
 }
+
+extension CancellableGroupBuilder {
+    public static func buildExpression(_ expression: Optional<Cancellable>) -> Cancellable {
+        expression ?? AnyCancellable { }
+    }
+    
+}
