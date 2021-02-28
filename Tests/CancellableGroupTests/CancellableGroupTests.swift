@@ -70,4 +70,38 @@ final class CancellableGroupTests: XCTestCase {
         
     }
     
+    func testOptionalGroupBuilder() {
+        weak var weakVarA: NSArray?
+        weak var weakVarB: NSArray?
+        
+        var group: CancellableGroup!
+        
+        _ = {
+            let strongVarA = NSArray(array: [NSObject()])
+            let strongVarB = NSArray(array: [NSObject()])
+            
+            weakVarA = strongVarA
+            weakVarB = strongVarB
+            
+            let a: Cancellable? = AnyCancellable { _ = strongVarA }
+            let b: Cancellable = AnyCancellable { _ = strongVarB }
+            
+            group = CancellableGroup {
+                a
+                b
+                
+            }
+            
+        }()
+        
+        XCTAssertNotNil(weakVarA)
+        XCTAssertNotNil(weakVarB)
+        
+        group.cancel()
+        
+        XCTAssertNil(weakVarA)
+        XCTAssertNil(weakVarB)
+        
+    }
+    
 }
