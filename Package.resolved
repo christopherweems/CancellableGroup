@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ForEach",
+        "repositoryURL": "https://github.com/christopherweems/ForEach.git",
+        "state": {
+          "branch": null,
+          "revision": "0a20b045f49858f6a2f9126a64779e698abae286",
+          "version": "0.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
